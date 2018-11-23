@@ -28,6 +28,6 @@ These instructions will get you through the steps required in setting up the pro
 
 # Prerequisites
 
-Firstly, you need to install node.js on your system by using the link <a href="https://nodejs.org/en"></a>, follow the instructions on the website to get started.</br></br>
-Secondly, you need to clone this repository or download the zip file. To do this, you need to install git on your local computer from <a href="https://https://git-scm.com/downloads"></a> so as to be able to access the git bash user interface terminal.</br></br>
+Firstly, you need to install node.js on your system by using the link <a href="https://nodejs.org/en">nodejs.org/en</a>, follow the instructions on the website to get started.</br></br>
+Secondly, you need to clone this repository or download the zip file. To do this, you need to install git on your local computer from <a href="https://https://git-scm.com/downloads">https://git-scm.com/downloads</a> so as to be able to access the git bash user interface terminal.</br></br>
 Thirdly, make sure you have a text editor like sublimetext, visual studio, atom etc. to be able to type in and edit your codes.</br></br>
