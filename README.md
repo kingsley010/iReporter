@@ -21,7 +21,7 @@ repair bad road sections, collapsed bridges, flooding e.t.c). </li>
 <li> Add geolocation (Lat Long Coordinates) to their red-flag or intervention
 records. </li>
 All these and many more are possible as long as the user has signed up and is logged in to the platform.
-Here is a <a href="https://perfect090.github.io/iReporter/UI/">demo</a>
+<p>Here is a <a href="https://perfect090.github.io/iReporter/UI/">demo</a></P>
 
 # Getting Started
 
