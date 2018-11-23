@@ -10,7 +10,7 @@ general public. Users can also report on things that needs government interventi
 # Features
 # The User Interface
 
-The user interface or UI is the front-end part of the platform implemented with only HTML, CSS and Javascript. The user interface is the part the user can interact with when they visit the website.
+The user interface or UI is the front-end part of the platform implemented with only HTML, CSS and Javascript. The user interface is the part the user can interact with when they visit the website. 
 Some of the interactions that can be done with the platform include:
 <li> Creating an account and loging in </li>
 <li> Creating a red-flag record (An incident linked to corruption). </li>
@@ -21,6 +21,7 @@ repair bad road sections, collapsed bridges, flooding e.t.c). </li>
 <li> Add geolocation (Lat Long Coordinates) to their red-flag or intervention
 records. </li>
 All these and many more are possible as long as the user has signed up and is logged in to the platform.
+Here is a <a href="https://perfect090.github.io/iReporter/">demo</a>
 
 # Getting Started
 
