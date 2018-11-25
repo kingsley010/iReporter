@@ -1,0 +1,19 @@
+{
+  "name": "ireporter",
+  "version": "1.0.0",
+  "description": "A platform for reporting corrupt practices and what situation requires government intervention.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perfect090/iReporter.git"
+  },
+  "author": "Obioha Kingsley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perfect090/iReporter/issues"
+  },
+  "homepage": "https://github.com/perfect090/iReporter#readme"
+}
