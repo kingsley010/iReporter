@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 // Route Files
 import records from './src/routes/record';
-app.use('/api/v1/records', records);
+app.use('/api/v1', records);
 
 app.use((req, res, next) => {
 	const error = new Error('Not Found');
