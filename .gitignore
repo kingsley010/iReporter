@@ -4,5 +4,5 @@ dist/
 .coveralls.yml
 .nycrc
 .eslintrc
-records.json
-register.json
+incident.json
+user.json
