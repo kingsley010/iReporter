@@ -4,7 +4,7 @@
   "description": "A platform for reporting corrupt practices and what situation requires government intervention.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start",
     "build": "babel --presets env src -d dist"
   },
   "repository": {
@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/perfect090/iReporter#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
