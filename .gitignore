@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.nyc_output/
+.coveralls.yml
+.nycrc
+.eslintrc
+incident.json
+user.json
