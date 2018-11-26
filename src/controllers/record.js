@@ -10,6 +10,7 @@ const createRecord = (req, res) => {
 		res.status(201).json({
 		data: [{
 			id: 1,
+			message: 'created red-flag record',
 			createdOn: '26/11/18',
 			createdBy: '2',
 			type: 'red-flag',
