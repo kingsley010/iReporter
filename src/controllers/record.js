@@ -28,7 +28,14 @@ const createRecord = (req, res) => {
 	}
 };
 
+const fetchAllRecords = (req, res) => {
+	res.status(200).json({
+		data: incident.records
+	});
+}
+
 // Exporting controller
 module.exports = {
-	createRecord
+	createRecord,
+	fetchAllRecords
 }
