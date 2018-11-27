@@ -10,6 +10,7 @@ const createRecord = (req, res) => {
 		res.status(201).json({
 		data: [{
 			id: 1,
+			message: 'created red-flag record',
 			createdOn: '26/11/18',
 			createdBy: '2',
 			type: 'red-flag',
@@ -27,7 +28,7 @@ const createRecord = (req, res) => {
 	}
 };
 
-const getAllRecords = (req, res) => {
+const fetchAllRecords = (req, res) => {
 	res.status(200).json({
 		data: incident.records
 	});
@@ -36,5 +37,5 @@ const getAllRecords = (req, res) => {
 // Exporting controller
 module.exports = {
 	createRecord,
-	getAllRecords
+	fetchAllRecords
 }

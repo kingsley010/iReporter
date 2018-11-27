@@ -7,6 +7,6 @@ import users from '../../user.json';
 import recordController from '../controllers/record';
 
 router.post('/red-flags', recordController.createRecord);
-router.get('/red-flags', recordController.getAllRecords);
+router.get('/red-flags', recordController.fetchAllRecords);
 
 export default router;
