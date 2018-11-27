@@ -2,40 +2,52 @@ import incident from '../../incident.json';
 import users from '../../user.json';
 
 const createRecord = (req, res) => {
-	const rcd = {
-		username: req.body.username,
-		title: req.body.title
-	};
-	if (rcd) {
-		res.status(201).json({
-		data: [{
-			id: 1,
-			message: 'created red-flag record',
-			createdOn: '26/11/18',
-			createdBy: '2',
-			type: 'red-flag',
-			location: 'lat: -34.397, lng: 150.644',
-			status: 'under investigation',
-			images: '[image, image]',
-			images: '[image, image]',
-			record: rcd
-		}]
-	});
-	} else {
-		res.status(404).json({
-			message: 'No post submitted'
-		})
-	}
+  const rcd = {
+    username: req.body.username,
+    title: req.body.title
+  };
+  if (rcd) {
+    res.status(201).json({
+      data: [{
+        id: 1,
+        message: 'created red-flag record',
+        createdOn: '26/11/18',
+        createdBy: '2',
+        type: 'red-flag',
+        location: 'lat: -34.397, lng: 150.644',
+        status: 'under investigation',
+        images: '[image, image]',
+        images: '[image, image]',
+        record: rcd
+      }]
+    });
+  } else {
+    res.status(404).json({
+      message: 'No post submitted'
+    });
+  }
 };
 
 const fetchAllRecords = (req, res) => {
-	res.status(200).json({
-		data: incident.records
-	});
-}
+  res.status(200).json({
+    data: incident.records
+  });
+};
+
+const fetchOneRecord = (req, res) => {
+  const id = req.params.id;
+  for (let i = 0; i < incident.records.length; i++) {
+    if (id === incident.records[i].id) {
+      return res.status(200).json({
+        records: incident.records[i]
+      });
+    }
+  }
+};
 
 // Exporting controller
 module.exports = {
-	createRecord,
-	fetchAllRecords
-}
+  createRecord,
+  fetchAllRecords,
+  fetchOneRecord
+};
