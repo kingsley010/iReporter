@@ -27,12 +27,6 @@ const createRecord = (req, res) => {
 	}
 };
 
-const getAllRecords = (req, res) => {
-	res.status(200).json({
-		data: incident.records
-	});
-}
-
 // Exporting controller
 module.exports = {
 	createRecord,
