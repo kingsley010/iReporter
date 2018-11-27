@@ -1,12 +1,12 @@
 import express from 'express';
-const router = express.Router();
-
-
+import recordController from '../controllers/record';
 import incident from '../../incident.json';
 import users from '../../user.json';
-import recordController from '../controllers/record';
+
+const router = express.Router();
 
 router.post('/red-flags', recordController.createRecord);
 router.get('/red-flags', recordController.fetchAllRecords);
+router.get('/red-flags/:id', recordController.fetchOneRecord);
 
 export default router;
