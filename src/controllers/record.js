@@ -17,7 +17,7 @@ const createRecord = (req, res) => {
         location: 'lat: -34.397, lng: 150.644',
         status: 'under investigation',
         images: '[image, image]',
-        images: '[image, image]',
+        videos: '[image, image]',
         record: rcd
       }]
     });
@@ -45,9 +45,35 @@ const fetchOneRecord = (req, res) => {
   }
 };
 
+const editOneRecord = (req, res) => {
+  const id = req.params.id;
+  const edit = {
+  	title: req.body.title
+  };
+  for (let i = 0; i < incident.records.length; i++) {
+    if (id === incident.records[i].id) {
+    	if (edit) {
+          return res.status(200).json({
+          id: incident.records[i].id,
+          message: 'updated red-flag record',
+          title: edit,
+          createdOn: '26/11/18',
+          createdBy: '2',
+          type: 'red-flag',
+          location: 'lat: -34.397, lng: 150.644',
+          status: 'under investigation',
+          images: '[image, image]',
+          videos: '[image, image]'
+      });
+     }
+    }
+  }
+};
+
 // Exporting controller
 module.exports = {
   createRecord,
   fetchAllRecords,
-  fetchOneRecord
+  fetchOneRecord,
+  editOneRecord
 };
