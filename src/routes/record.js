@@ -9,5 +9,6 @@ router.post('/red-flags', recordController.createRecord);
 router.get('/red-flags', recordController.fetchAllRecords);
 router.get('/red-flags/:id', recordController.fetchOneRecord);
 router.patch('/red-flags/:id', recordController.editOneRecord);
+router.patch('/red-flags/:id/location', recordController.editOneLocation);
 
 export default router;

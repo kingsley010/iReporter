@@ -47,7 +47,7 @@ const fetchOneRecord = (req, res) => {
 
 const editOneRecord = (req, res) => {
   const id = req.params.id;
-  const edit = {
+  let edit = {
   	title: req.body.title
   };
   for (let i = 0; i < incident.records.length; i++) {
@@ -70,10 +70,35 @@ const editOneRecord = (req, res) => {
   }
 };
 
+const editOneLocation = (req, res) => {
+  const id = req.params.id;
+  let edit = {
+  	location: req.body.location
+  };
+  for (let i = 0; i < incident.records.length; i++) {
+    if (id === incident.records[i].id) {
+    	if (edit) {
+          return res.status(200).json({
+          id: incident.records[i].id,
+          message: 'updated red-flag\'s record location',
+          createdOn: '26/11/18',
+          createdBy: '2',
+          type: 'red-flag',
+          location: edit,
+          status: 'under investigation',
+          images: '[image, image]',
+          videos: '[image, image]'
+      });
+     }
+    }
+  }
+};
+
 // Exporting controller
 module.exports = {
   createRecord,
   fetchAllRecords,
   fetchOneRecord,
-  editOneRecord
+  editOneRecord,
+  editOneLocation
 };
