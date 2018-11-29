@@ -124,8 +124,10 @@ const removeOneRecord = (req, res) => {
   for (let i = 0; i < incident.records.length; i++) {
     if (id === incident.records[i].id) {
       return res.status(200).json({
+      	data: [{
       	id: id,
         message: 'red-flag record has been deleted'
+         }]
       });
     }
   }
