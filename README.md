@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/perfect090/iReporter.svg?branch=develop)](https://travis-ci.org/perfect090/iReporter)
+
 # iReporter
 
 Andela Cycle 39 Developer Challenge
