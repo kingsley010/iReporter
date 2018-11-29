@@ -119,6 +119,18 @@ const editOneComment = (req, res) => {
   }
 };
 
+const removeOneRecord = (req, res) => {
+  const id = req.params.id;
+  for (let i = 0; i < incident.records.length; i++) {
+    if (id === incident.records[i].id) {
+      return res.status(200).json({
+      	id: id,
+        message: 'red-flag record has been deleted'
+      });
+    }
+  }
+};
+
 // Exporting controller
 module.exports = {
   createRecord,
@@ -126,5 +138,6 @@ module.exports = {
   fetchOneRecord,
   editOneRecord,
   editOneLocation,
-  editOneComment
+  editOneComment,
+  removeOneRecord
 };
