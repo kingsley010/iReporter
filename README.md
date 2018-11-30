@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/perfect090/iReporter.svg?branch=develop)](https://travis-ci.org/perfect090/iReporter) [![Maintainability](https://api.codeclimate.com/v1/badges/58c464c3d7e1cfee72f1/maintainability)](https://codeclimate.com/github/perfect090/iReporter/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/58c464c3d7e1cfee72f1/test_coverage)](https://codeclimate.com/github/perfect090/iReporter/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/perfect090/iReporter/badge.svg?branch=ch-integrate-travis-CI-162183349)](https://coveralls.io/github/perfect090/iReporter?branch=ch-integrate-travis-CI-162183349)
-
 # iReporter
 
 Andela Cycle 39 Developer Challenge
@@ -30,6 +28,6 @@ These instructions will get you through the steps required in setting up the pro
 
 # Prerequisites
 
-Firstly, you need to install node.js on your system by using the link <a href="https://nodejs.org/en">nodejs.org/en</a>, follow the instructions on the website to get started.</br></br>
-Secondly, you need to clone this repository or download the zip file. To do this, you need to install git on your local computer from <a href="https://https://git-scm.com/downloads">git-scm.com/downloads</a> so as to be able to access the git bash user interface terminal.</br></br>
+Firstly, you need to install node.js on your system by using the link <a href="https://nodejs.org/en"></a>, follow the instructions on the website to get started.</br></br>
+Secondly, you need to clone this repository or download the zip file. To do this, you need to install git on your local computer from <a href="https://https://git-scm.com/downloads"></a> so as to be able to access the git bash user interface terminal.</br></br>
 Thirdly, make sure you have a text editor like sublimetext, visual studio, atom etc. to be able to type in and edit your codes.</br></br>
