@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Home Route
 app.get('/', (req, res) => {
-	const mssg = "<p> Welcome to iReporter. </p>";
+	const mssg = "<p> Welcome to iReporter. iReporter is a platform for reporting corrupt practices and what situation requires government intervention. </p>";
 	res.status(200).send(mssg);
 }); 
 
