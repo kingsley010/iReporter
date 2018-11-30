@@ -1,0 +1,74 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title> iReporter </title>
+	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
+</head>
+<body>
+
+		<div id="content">
+			
+		<header>
+			<div>
+				<ul>
+					<span id="he_ader">
+					<li id="hea_der"><a href="../index.html"> iReporter </a></li>
+					</span>
+					<span id="head_er">
+					<li title="Home"> <a  id="header_link" href="../index.html"> Home </a>  </li>
+					<li title="About"> <a  id="header_link" href="about.html"> About </a>  </li>
+		            <li title="Contact"> <a id="header_link" href="contact.html"> Contact </a>  </li>
+		            <li title="Signin"> <a id="header_link" href="signin.html"> Signin </a>  </li>  
+		            <li title="Signup"> <a  id="header_link" href="signup.html"> Signup </a>  </li>   
+		            <li title="Profile"> <a  id="header_link" href="profile.html"> Profile </a>  </li>   
+		            </span>   
+	        	</ul>
+        	</div>
+		</header>
+
+		<section>
+			<div id="intervention_create">
+				<form action="" method="POST">
+					<a href="red_flag_add.html"> create red-flag record </a>
+					<h2> Create Intervention record </h2>
+
+					<label for="title">Title</label>
+					<input id="red_flag_input" type="text" name="r_title" required>
+
+					<label for="body"> Type in intervention record here </label>
+					<textarea id="text_area" name="r_body"></textarea required>
+
+					<button id="text_button" type="submit">Submit</button>
+				</form>
+
+				<div id="pic_div">
+								<div class="container">
+									<input type="file" name="pic" id="browse" class="hidden" ng-disabled="disabled" type="file" title="Add image"/>
+										<img src="../public/img/15.jpeg" class="img" class="img-responsive; pull-right" id="ShowImage" alt="Add image">
+				    					<label for="browse" class="middle text">Add image</label>
+								</div>
+				    			
+								<div id="container">
+										<img src="../public/img/15.jpeg" class="img" class="img-responsive; pull-right" id="ShowImage" alt="Upload video">
+				    					<label for="browse" class="middle text">Add Video</label>
+								</div>
+				    			
+				    			<div id="container">
+										<img src="../public/img/15.jpeg" class="img" class="img-responsive; pull-right" id="ShowImage" alt="Add Location">
+				    					<label for="browse" class="middle text">Add Location</label>
+								</div>
+				</div><br><br>
+			</div>
+		</section>
+
+		<footer>
+			<div id="footer">
+				<a href="http://www.andela.com"> &copy; Copyright Andela.com </a>
+			</div>
+		</footer>
+
+
+		</div>
+
+</body>
+</html>

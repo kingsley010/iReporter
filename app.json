@@ -1,0 +1,6 @@
+{
+	"name": "iReporter app",
+	"description": "A platform for reporting corrupt practices and what situation requires government intervention.",
+	"repository": "https://github.com/perfect090/iReporter.git",
+	"keywords": ["node", "express", "babel"]
+}
