@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/perfect090/iReporter.svg?branch=develop)](https://travis-ci.org/perfect090/iReporter) [![Maintainability](https://api.codeclimate.com/v1/badges/58c464c3d7e1cfee72f1/maintainability)](https://codeclimate.com/github/perfect090/iReporter/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/58c464c3d7e1cfee72f1/test_coverage)](https://codeclimate.com/github/perfect090/iReporter/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/perfect090/iReporter/badge.svg?branch=ch-integrate-travis-CI-162183349)](https://coveralls.io/github/perfect090/iReporter?branch=ch-integrate-travis-CI-162183349)
+
 # iReporter
 
 Andela Cycle 39 Developer Challenge
