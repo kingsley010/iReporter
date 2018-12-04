@@ -2,72 +2,95 @@ import incident from '../../incident.json';
 import users from '../../user.json';
 
 const createRecord = (req, res) => {
-  const rcd = {
-    username: req.body.username,
-    title: req.body.title
-  };
-  if (rcd) {
-    res.status(201).json({
-      data: [{
-        id: 1,
-        message: 'created red-flag record',
-        createdOn: '26/11/18',
-        createdBy: '2',
-        type: 'red-flag',
-        location: 'lat: -34.397, lng: 150.644',
-        status: 'under investigation',
-        images: '[image, image]',
-        videos: '[image, image]',
-        record: rcd
-      }]
-    });
-  } else {
-    res.status(404).json({
-      message: 'No post submitted'
-    });
-  }
-};
+  const redflag = incident.records.redflags;
+  const newId = redflag.length + 1;
+  const day = new Date();
+  const createdBy = req.body.createdBy;
+  const location = req.body.location;
+  const comment = req.body.comment;
 
-const fetchAllRecords = (req, res) => {
-  res.status(200).json({
-    data: incident.records
+
+  const rcd = {
+    id: newId,
+    createdOn: day,
+    createdBy: req.body.createdBy,
+    type: req.body.type,
+    location: req.body.location,
+    status: req.body.status,
+    Images: [],
+    Videos: [],
+    comment: req.body.comment
+  }
+
+  redflag.push(rcd);
+  return res.status(200).send({
+    status: 200,
+    data: [{
+      id: newId,
+      message: "Created red-flag record"
+    }]
   });
 };
 
-const fetchOneRecord = (req, res) => {
-  const id = req.params.id;
-  for (let i = 0; i < incident.records.length; i++) {
-    if (id === incident.records[i].id) {
-      return res.status(200).json({
-        records: incident.records[i]
-      });
-    }
+const fetchAllRecords = (req, res) => {
+  const redflag = incident.records.redflags;
+	if (incident.records.redflags) {
+		res.status(200).json({
+        data : [{
+        	redflag
+        }]
+   });
   }
 };
 
-const editOneRecord = (req, res) => {
-  const id = req.params.id;
-  const edit = {
-  	title: req.body.title
-  };
-  for (let i = 0; i < incident.records.length; i++) {
-    if (id === incident.records[i].id) {
-    	if (edit) {
-          return res.status(200).json({
-          id: incident.records[i].id,
-          message: 'updated red-flag record',
-          title: edit,
-          createdOn: '26/11/18',
-          createdBy: '2',
-          type: 'red-flag',
-          location: 'lat: -34.397, lng: 150.644',
-          status: 'under investigation',
-          images: '[image, image]',
-          videos: '[image, image]'
+const fetchOneRecord = (req, res) => {
+  const id = req.params.id * 1;
+  const redflag = incident.records.redflags.find(o => o.id === id);
+    if (redflag) {
+      return res.status(200).json({
+        records: redflag
       });
-     }
+    } else {
+    	return res.status(404).send({
+          error: 'Record not found'
+     });
+   }
+};
+
+const editOneRecord = (req, res) => {
+  const id = req.params.id * 1;
+  const redflag = incident.records.redflags.find(o => o.id === id);
+    if (!redflag) {
+      return res.status(404).json({
+        error: 'Record not found'
+      });
     }
-  }
+    if (!req.body.title) {
+   	  return res.status(404).json({
+        error: 'Title is required'
+   	  });
+   }
+
+    const day = new Date();
+    const updateRcd = {
+    	id: redflag.id,
+    	title: req.body.title,
+        createdOn: day,
+        createdBy: req.body.createdBy,
+        type: req.body.type,
+        location: req.body.location,
+        status: req.body.status,
+        Images: [],
+        Videos: [],
+        comment: req.body.comment
+    }
+    incident.records.redflags.splice(redflag.location, 1, updateRcd);
+    return res.status(200).json({
+    	data: [{
+    		id: id,
+    		message: 'Updated red-flag record'
+    	}]
+    });
 };
 
 // Exporting controller
