@@ -60,10 +60,10 @@ This edits a specific red flag record.
 This edits the location of a specific red-flag record.
 
 # PATCH /api/v1/red-flags/:id/comment/
-This edits the location of a specific red-flag record.
+This edits the comment of a specific red-flag record.
 
 # DELETE /api/v1/red-flags/:id/
-This retrieves all answers for a question.</br></br>
+This deletes a specific red-flag record.</br></br>
 
 # Deployment
 
