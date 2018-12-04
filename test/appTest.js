@@ -60,7 +60,7 @@ describe('fetchOneRecord', () => {
         'videos': [],
         'comment': 'The Halliburton scandal'
       };
-      chai.request('/api/v1')
+      chai.request('api/v1')
       .get('/red-flags/:id')
       .send(rcd)
       .end((err, res) => {
@@ -109,7 +109,7 @@ describe('editOneLocation', () => {
         'videos': [],
         'comment': 'The Halliburton scandal'
       };
-      chai.request('/api/v1')
+      chai.request('api/v1')
       .patch('/red-flags/:id/location')
       .send(rcd)
       .end((err, res) => {
@@ -134,7 +134,7 @@ describe('editOneComment', () => {
         'videos': '[Image, Image]',
         'comment': 'The Halliburton scandal'
       };
-      chai.request('/api/v1')
+      chai.request('api/v1')
       .patch('/red-flags/:id/comment')
       .send(rcd)
       .end((err, res) => {
@@ -147,7 +147,7 @@ describe('editOneComment', () => {
 
 describe('removeOneRecord', () => {
   it('should delete a specific red-flag record', (done) => {
-    chai.request('/api/v1')
+    chai.request('api/v1')
       .delete('/red-flags/:id')
       .end((err, res) => {
         res.should.have.status(200);
