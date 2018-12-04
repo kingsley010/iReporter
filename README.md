@@ -32,4 +32,47 @@ These instructions will get you through the steps required in setting up the pro
 
 Firstly, you need to install node.js on your system by using the link <a href="https://nodejs.org/en">nodejs.org/en</a>, follow the instructions on the website to get started.</br></br>
 Secondly, you need to clone this repository or download the zip file. To do this, you need to install git on your local computer from <a href="https://https://git-scm.com/downloads">git-scm.com/downloads</a> so as to be able to access the git bash user interface terminal.</br></br>
-Thirdly, make sure you have a text editor like sublimetext, visual studio, atom etc. to be able to type in and edit your codes.</br></br>
+Thirdly, make sure you have a text editor like sublimetext, visual studio, atom etc. to be able to type in and edit your codes.
+
+# Installing
+
+Installing the application is a quite easy. After cloning the repository to your local computer with the "git clone" command e.g. git clone https://github.com/perfect090/iReporter.git. Change directory into the folder on your most preferred terminal, let's say git bash and run the command: <strong>npm install</strong>. This will install all the dependencies and development dependencies on your local machine.</br></br>
+Once the installation has been completed, the server can be started with the <strong>npm start</strong> command which runs the start script (nodemon app.js --exec babel-node --presets babel-preset-env) in the package.json file.</br></br>
+The same process can be used in running the tests by typing the command: <strong>npm start</strong> which runs the test script in the package.json file.
+
+# Api Endpoints
+
+The api endpoints that can currently be accessed are as follows:</br></br>
+
+# GET /api/v1/red-flags/
+This retrieves all the red-flag records from the database.
+
+# GET /api/v1/red-flags/:id/
+This retrieves a specific red-flag record from the database.
+
+# POST /api/v1/red-flags/
+This adds a red flag record to the database.
+
+# PATCH /api/v1/red-flags/:id/
+This edits a specific red flag record.
+
+# PATCH /api/v1/red-flags/:id/location/
+This edits the location of a specific red-flag record.
+
+# PATCH /api/v1/red-flags/:id/comment/
+This edits the location of a specific red-flag record.
+
+# DELETE /api/v1/red-flags/:id/
+This retrieves all answers for a question.</br></br>
+
+# Deployment
+
+This app has been deployed on the heroku platform and can be accessed by clicking on the link <a href="https://perfect090-ireporter.herokuapp.com">perfect090-ireporter.herokuapp.com</a>
+
+# Author
+
+<strong>Obioha Kingsley</strong>
+
+# License
+
+This project is licensed under the <a href="https://opensource.org/licenses/MIT">MIT license </a>
