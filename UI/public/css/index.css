@@ -109,11 +109,12 @@ header ul li {
 
 #index p {
 	font-size: 20px;
+	color: black;
 }
 
 #mark {
 	text-decoration: none;
-	color: black;
+	color: white;
 }
 
 #he_ader {
