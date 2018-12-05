@@ -3,6 +3,7 @@ body {
 		color: #fff;
 		font-family: 'Nunito Semibold';
 		text-align: center;
+		background-color: #008aff;
 		}
 		
 #content {
@@ -13,7 +14,6 @@ body {
 			margin: 0 auto;
 			grid-template-areas:
 			"header header header header header header"
-			"section section section section section section"
 			"section section section section section section"
 			"section section section section section section"
 			"section section section section section section"
@@ -54,7 +54,7 @@ body {
 				opacity: ;
 }
 #content section {
-				background: ;
+				background: #008aff;
 				padding: 30px;
 				opacity: ;
 }
@@ -72,8 +72,6 @@ body {
 				background: #008aff;
 				padding: 30px;
 				opacity: ;
-				height: 0px;
-				margin-top: 100px;
 }
 
 header {
@@ -105,8 +103,17 @@ header ul li {
 	display: inline;
 }
 
-.index {
-	background-color: #008aff;
+#index {
+	text-align: left;
+}
+
+#index p {
+	font-size: 20px;
+}
+
+#mark {
+	text-decoration: none;
+	color: black;
 }
 
 #he_ader {
@@ -311,6 +318,15 @@ button:hover {
 }
 
 #intervention span a {
+	text-decoration: none;
+}
+
+#footer {
+	padding: 10px;
+}
+
+#footer a {
+	color: white;
 	text-decoration: none;
 }
 
