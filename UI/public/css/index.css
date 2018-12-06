@@ -8,17 +8,16 @@ body {
 #content {
 			display: grid;
 			grid-template-column: repeat(6, 1fr);
-			grid-auto-rows: 75px;
+			grid-auto-rows: minmax(100px, auto);
 			max-width: none;
 			margin: 0 auto;
 			grid-template-areas:
 			"header header header header header header"
-			"nav nav section section section section"
-			"nav nav section section section section"
-			"nav nav section section section section"
-			"nav nav section section section section"
-			"nav nav section section section section"
-			"nav nav footer footer footer footer"
+			"section section section section section section"
+			"section section section section section section"
+			"section section section section section section"
+			"section section section section section section"
+			"footer footer footer footer footer footer"
 			;
 			
 		}
@@ -48,7 +47,7 @@ body {
 }
 
 #content header {
-				background: ;
+				background: #f4f4f4;
 				padding: 20px;
 				opacity: ;
 }
@@ -63,7 +62,7 @@ body {
 				opacity: ;
 }
 #content nav {
-				background: ;
+				background: indigo;
 				padding: 30px;
 				opacity: ;
 }
@@ -71,6 +70,8 @@ body {
 				background: ;
 				padding: 30px;
 				opacity: ;
+				height: 0px;
+				margin-top: 100px;
 }
 
 header {
@@ -102,26 +103,8 @@ header ul li {
 	display: inline;
 }
 
-#index {
-	padding: 20px;
-    background: grey;
-    border: 0;
-    box-sizing: border-box;
-    color: ;
-    font-size: 20px;
-    border-radius: 30px;
-	text-align: left;
-	opacity: 0.9;
-}
-
-#index p {
-	font-size: 18px;
-	color: white;
-}
-
-#mark {
-	text-decoration: ;
-	color: blue;
+.index {
+	background-color: #008aff;
 }
 
 #he_ader {
@@ -131,43 +114,20 @@ header ul li {
 	font-size: 30px;
 }
 #he_ader a {
-	color: white;
+	color: #008aff;
 	text-decoration: none;
 }
 
-#he_ader a:hover {
-	background-color: #008aff;
-	color: white;
-	border-radius: 10px;
-}
-
 #head_er li a {
-	color: white;
+	color: #008aff;
 }
 
 #align {
 	margin: auto;
 }
 
-#im-ages {
-	width: 240px;
-	height: 120px;
-	float: left;
-}
-
-#im-age {
-	width: 240px;
-	height: 120px;
-	float: left;
-	margin-left: -240px;
-	margin-top: 100px;
-}
-
 section {
 	grid-area: section;
-}
-nav {
-	grid-area: nav;
 }
 footer {
 	grid-area: footer;
@@ -175,6 +135,36 @@ footer {
 footer a {
 	text-decoration: none;
 	color: black;
+}
+#index {
+	position: absolute;
+	text-align: left;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    margin-top: -70px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+#overlay {
+	position: fixed; 
+    width: 100%; 
+    height: 100%; 
+    margin-top: -60px;
+    margin-bottom: 200px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+    cursor: pointer;
+}
+#mark {
+	text-decoration: ;
+	color: blue;
+}
+#rights {
+	font-size: 15px;
 }
 footer a:hover {
 	background: ;
@@ -191,7 +181,7 @@ button:hover {
 #header_link {
 	background: ;
 	border-radius: 10px;
-	padding: 10px;
+	padding: 5px;
 	color: white;
 }
 #header_link:hover {
@@ -199,13 +189,14 @@ button:hover {
 	color: white;
 	border-radius: 10px;
 	transition: background-color 2s;
-	padding-left: 20px;
+	padding-left: 15px;
+	padding-right: 0px;
 }
 
 #header_plink {
 	background: ;
 	border-radius: 10px;
-	padding: 10px;
+	padding: 5px;
 	color: white;
 }
 #header_plink:hover {
@@ -346,22 +337,8 @@ button:hover {
 	text-decoration: none;
 }
 
-#footer {
-	margin-top: 100px;
-	padding: 0px;
-    border: 0;
-    box-sizing: border-box;
-    color: ;
-    font-size: 20px;
-    border-radius: 30px;
-}
-
 #footer a {
 	color: white;
-	text-decoration: none;
-	background: grey;
-	padding: 10px;
-	border-radius: 20px;
 }
 
 #footer a:hover {
