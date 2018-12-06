@@ -15,9 +15,10 @@
 					</span>
 				<ul>
 					<span id="head_er">
-					<li title="Home"> <a  id="header_link" href="logged.html"> Home </a>  </li> 
-		            <li title="Profile"> <a  id="header_link" href="profile.html"> Profile </a>  </li>   
-		            <li title="Profile"> <a  id="header_plink" href="../index.html"> Logout </a>  </li> 
+						<li title="Home"> <a  id="header_link" href="admin-board.html"> Admin </a>  </li>
+						<li title="Home"> <a  id="header_link" href="logged.html"> Home </a>  </li> 
+						<li title="Profile"> <a  id="header_link" href="profile.html"> Profile </a>  </li>   
+						<li title="Profile"> <a  id="header_plink" href="../index.html"> Logout </a>  </li> 
 		            </span>   
 	        	</ul>
         	</div>
@@ -29,10 +30,13 @@
 					
 					<h2> Create record </h2>
 
-					<label for="title">Title</label>
-					<input id="red_flag_input" type="text" name="r_title" required>
+					<label id="label" for="title">Title</label><br>
+					<input id="red_flag_input" type="text" name="r_title" required><br>
 
-					<label for="body"> Type in red-flag record here </label>
+					<label id="label" for="title">Type of record</label><br>
+					<input id="sign_input" type="text" name="s_title"  placeholder="either redflag or intervention"><br>
+
+					<label id="label" for="body"> Type in record here </label>
 					<textarea id="text_area" name="r_body"></textarea required>
 
 					<button id="text_button" type="submit">Submit</button>
