@@ -5,12 +5,8 @@ const createRecord = (req, res) => {
   const redflag = incident.records.redflags;
   const newId = redflag.length + 1;
   const day = new Date();
-  const createdBy = req.body.createdBy;
-  const location = req.body.location;
-  const comment = req.body.comment;
-
-
-  const rcd = {
+  
+  const record = {
     id: newId,
     createdOn: day,
     createdBy: req.body.createdBy,
@@ -22,7 +18,7 @@ const createRecord = (req, res) => {
     comment: req.body.comment
   }
 
-  redflag.push(rcd);
+  redflag.push(record);
   return res.status(201).send({
     data: [{
       id: newId,
@@ -172,6 +168,7 @@ const removeOneRecord = (req, res) => {
         error: 'Record not found'
       });
     }
+    
     const newId = incident.records.redflags.length + 1;
     const final = incident.records.redflags.indexOf(incident.records.redflags);
     incident.records.redflags.splice(final, 1);
