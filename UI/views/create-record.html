@@ -5,9 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
 </head>
 <body>
-
-		<div id="content">
-			
+		<div id="content">		
 		<header>
 			<div>
 				<span id="he_ader">
@@ -25,39 +23,33 @@
 
 		<section>
 			<div id="red_flag_create">
-				<form action="" method="POST">
-					
+				<form action="" method="POST">					
 					<h2> Create record </h2>
-
 					<label id="label" for="title">Title</label><br>
 					<input id="red_flag_input" type="text" name="r_title" required><br>
-
 					<label id="label" for="title">Type of record</label><br>
 					<input id="sign_input" type="text" name="s_title"  placeholder="either redflag or intervention"><br>
-
 					<label id="label" for="body"> Type in record here </label>
 					<textarea id="text_area" name="r_body"></textarea required>
-
 					<button id="text_button" type="submit">Submit</button>
 				</form>
-
 				<div id="pic_div">
 								<div class="container">
 									<input type="file" name="pic" id="browse" class="hidden" ng-disabled="disabled" type="file" title="Add image"/>
 										<img src="../public/img/15.jpeg" class="img" class="img-responsive; pull-right" id="ShowImage" alt="Add image">
 				    					<label for="browse" class="middle text">Add image</label>
-								</div>
-				    			
+								</div>				    			
 								<div id="container">
 										<img src="../public/img/15.jpeg" class="img" class="img-responsive; pull-right" id="ShowImage" alt="Upload video">
 				    					<label for="browse" class="middle text">Add Video</label>
-								</div>
-				    			
+								</div>				    			
 				    			<div id="container">
 										<img src="../public/img/15.jpeg" class="img" class="img-responsive; pull-right" id="ShowImage" alt="Add Location">
 				    					<label for="browse" class="middle text">Add Location</label>
 								</div>
-						</div><br><br>
+						</div>
+						<br>
+						<br>
 			</div>
 		</section>
 
@@ -66,8 +58,6 @@
 				<a href="http://www.andela.com"> &copy; 2018 All Rights Reserved </a>
 			</div>
 		</footer>
-
-
 		</div>
 
 </body>
