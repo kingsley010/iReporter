@@ -649,7 +649,12 @@ hr {
 
 #profyl_record ul li a {
 	text-decoration: none;
-	color: blue;
+	color: white;
+}
+
+#list {
+	background-color: #00a37a;
+	padding: 10px;
 }
 
 #details {
