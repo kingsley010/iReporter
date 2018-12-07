@@ -53,39 +53,28 @@ const fetchOneRecord = (req, res) => {
 };
 
 const editOneLocation = (req, res) => {
-  const id = req.params.id * 1;
-  const redflag = incident.records.redflags.find(o => o.id === id);
-    if (!redflag) {
-      return res.status(404).json({
-        error: 'Record not found'
-      });
-    }
-    if (!req.body.location) {
-      return res.status(404).json({
-        error: 'Title is required'
-      });
-   }
-
-    const day = new Date();
-    const updateRcd = {
-      id: redflag.id,
-      title: req.body.title,
-        createdOn: day,
-        createdBy: req.body.createdBy,
-        type: req.body.type,
-        location: req.body.location,
-        status: req.body.status,
-        Images: [],
-        Videos: [],
-        comment: req.body.comment
-    }
-    incident.records.redflags.splice(redflag.location, 1, updateRcd);
-    return res.status(200).json({
+  const id = req.params.id;
+  const database = incident.records.redflags;
+  const record = (id, database) => (
+    !!(database[id - 1])
+  );
+  if (!req.body.location) {
+    res.status(404).json({
+      error: 'Location is required'
+    });
+  } else if (!record(req.params.id, database)) {
+    res.status(400).json({
+      error: 'Record not found'
+    });
+  } else {
+    database[req.params.id - 1].location = req.body.location;
+    res.status(201).json({
       data: [{
         id: id,
         message: 'Updated red-flag record\'s location'
       }]
     });
+  }
 };
 
 const editOneComment = (req, res) => {
