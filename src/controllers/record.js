@@ -125,23 +125,22 @@ const editOneComment = (req, res) => {
 };
 
 const removeOneRecord = (req, res) => {
-  const id = req.params.id * 1;
-  const redflag = incident.records.redflags.find(o => o.id === id);
-  if (!redflag) {
-      return res.status(404).json({
-        error: 'Record not found'
-      });
-    }
-    
-    const newId = incident.records.redflags.length + 1;
-    const final = incident.records.redflags.indexOf(incident.records.redflags);
-    incident.records.redflags.splice(final, 1);
-    return res.status(200).json({
-      data: [{
-        id: id,
-        message: 'red-flag record has been deleted'
-      }]
+  const id = req.params.id;
+  const database = incident.records.redflags;
+  const record = (id, database) => (
+    !!(database[id - 1])
+  );
+  if (!record(req.params.id, database)) {
+    res.status(404).json({
+      error: 'Record not found'
     });
+  } else {
+    delete database [req.params.id - 1];
+    res.status(200).json({
+      id: id,
+      message: 'red-flag record has been deleted' 
+    });
+  }
 };
 
 
@@ -150,7 +149,6 @@ module.exports = {
   createRecord,
   fetchAllRecords,
   fetchOneRecord,
-  editOneRecord,
   editOneLocation,
   editOneComment,
   removeOneRecord
