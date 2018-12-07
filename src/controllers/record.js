@@ -52,6 +52,42 @@ const fetchOneRecord = (req, res) => {
    }
 };
 
+const editOneRecord = (req, res) => {
+  const id = req.params.id * 1;
+  const redflag = incident.records.redflags.find(o => o.id === id);
+    if (!redflag) {
+      return res.status(404).json({
+        error: 'Record not found'
+      });
+    }
+    if (!req.body.title) {
+      return res.status(404).json({
+        error: 'Title is required'
+      });
+   }
+
+    const day = new Date();
+    const updateRcd = {
+      id: redflag.id,
+      title: req.body.title,
+        createdOn: day,
+        createdBy: req.body.createdBy,
+        type: req.body.type,
+        location: req.body.location,
+        status: req.body.status,
+        Images: [],
+        Videos: [],
+        comment: req.body.comment
+    }
+    incident.records.redflags.splice(redflag.location, 1, updateRcd);
+    return res.status(200).json({
+      data: [{
+        id: id,
+        message: 'Updated red-flag record'
+      }]
+    });
+};
+
 const editOneLocation = (req, res) => {
   const id = req.params.id * 1;
   const redflag = incident.records.redflags.find(o => o.id === id);
