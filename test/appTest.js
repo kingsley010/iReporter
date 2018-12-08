@@ -1,16 +1,13 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import babelCore from 'babel-core';
-import babelRegister from 'babel-register';
-import start from '../start';
 
 const should = chai.should();
 chai.use(chaiHttp);
 
 describe('createRecord', () => {
   it('should create a red-flag record on /api/v1/red-flags', (done) => {
-    let rcd = {
+    let record = {
     id: 1,
     title: 'Hello',
     createdOn: '25/11/2018',
@@ -23,136 +20,83 @@ describe('createRecord', () => {
     comment: 'Hi'
   };
 
-  chai.request('api/v1')
-  .post('/red-flags')
-  .send(rcd)
+  chai.request(app)
+  .post('/api/v1/red-flags')
+  .send(record)
   .end((err, res) => {
-  res.should.have.status(201);
-  done();
+      res.should.have.status(201);
+      res.body.should.be.a('object');
+    done();
   });
-  done();
   });
 });
 
 describe('fetchAllRecords', () => {
   it('should list ALL records on /api/v1/red-flags', (done) => {
-    chai.request('api/v1')
-      .get('/red-flags')
+    chai.request(app)
+      .get('/api/v1/red-flags')
       .end((err, res) => {
-      res.should.have.status(200);
+          res.should.have.status(200);
+          res.body.should.be.a('object');
         done();
       });
-      done();
   });
 });
 
 describe('fetchOneRecord', () => {
   it('should GET one red-flag record', (done) => {
-      let rcd = { 
-        'id': 1,
-        'title': 'Hello',
-        'createdOn': '25/11/18',
-        'createdBy': 2,
-        'type': ['red-flag'],
-        'location': 'lat: -34.397, lng: 150.644',
-        'status': 'under investigation',
-        'images': [],
-        'videos': [],
-        'comment': 'The Halliburton scandal'
-      };
-      chai.request('api/v1')
-      .get('/red-flags/:id')
-      .send(rcd)
+      chai.request(app)
+      .get('/api/v1/red-flags/2')
       .end((err, res) => {
-        res.should.have.status(200);
+          res.should.have.status(200);
+          res.body.should.be.a('object');
         done();
       });
-      done();
-  });
-});
-
-describe('editOneRecord', () => {
-  it('should edit one red-flag record', (done) => {
-      let rcd = { 
-        'id': 1,
-        'createdOn': '25/11/18',
-        'createdBy': 2,
-        'type': ['red-flag'],
-        'location': 'lat: -34.397, lng: 150.644',
-        'status': ['under investigation'],
-        'images': [],
-        'videos': [],
-        'comment': 'The Halliburton scandal'
-      };
-      chai.request('api/v1')
-      .patch('/red-flags/:id')
-      .send(rcd)
-      .end((err, res) => {
-        res.should.have.status(200);
-        done();
-      });
-      done();
   });
 });
 
 describe('editOneLocation', () => {
   it('should edit one red-flag record\'s location', (done) => {
-      let rcd = { 
-        'id': 1,
-        'title': 'Hello',
-        'createdOn': '25/11/18',
-        'createdBy': 2,
-        'type': ['red-flag'],
-        'location': 'lat: -34.397, lng: 150.644',
-        'status': ['under investigation'],
-        'images': [],
-        'videos': [],
-        'comment': 'The Halliburton scandal'
+      let record = { 
+        id: 2,
+        'location': 'lat: -34.397, lng: 150.644'
       };
-      chai.request('api/v1')
-      .patch('/red-flags/:id/location')
-      .send(rcd)
+      chai.request(app)
+      .patch('/api/v1/red-flags/2/location')
+      .send(record)
       .end((err, res) => {
-        res.should.have.status(200);
+          res.should.have.status(201);
+          res.body.should.be.a('object');
         done();
       });
-      done();
   });
 });
 
-describe('editOneComment', () => {
+describe('editOneLocation', () => {
   it('should edit one red-flag record\'s comment', (done) => {
-      let rcd = { 
-        'id': 1,
-        'title': 'Hello',
-        'createdOn': '25/11/18',
-        'createdBy': 2,
-        'type': 'red-flag',
-        'location': 'lat: -34.397, lng: 150.644',
-        'status': 'under investigation',
-        'images': '[Image, Image]',
-        'videos': '[Image, Image]',
-        'comment': 'The Halliburton scandal'
+      let record = { 
+        id: 2,
+        'comment': 'Hi'
       };
-      chai.request('api/v1')
-      .patch('/red-flags/:id/comment')
-      .send(rcd)
+      chai.request(app)
+      .patch('/api/v1/red-flags/2/comment')
+      .send(record)
       .end((err, res) => {
-        res.should.have.status(200);
+          res.should.have.status(201);
+          res.body.should.be.a('object');
         done();
       });
-      done();
   });
 });
 
 describe('removeOneRecord', () => {
   it('should delete a specific red-flag record', (done) => {
-    chai.request('api/v1')
-      .delete('/red-flags/:id')
+    chai.request(app)
+      .delete('/api/v1/red-flags/2')
       .end((err, res) => {
-        res.should.have.status(200);
+          res.should.have.status(200);
+          res.body.should.be.a('object');
         done();
       });
-      done();
   });
 });
