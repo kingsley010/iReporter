@@ -1,5 +1,1 @@
 node_modules/
-.coveralls.yml
-.codeclimate.yml
-coverage
-.nyc_output
