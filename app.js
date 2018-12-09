@@ -3,6 +3,8 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 
+require('dotenv').config();
+
 // Initialize app variable with express
 const app = express();
 

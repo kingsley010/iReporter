@@ -1,10 +1,15 @@
 import express from 'express';
 import recordController from '../controllers/record';
-import incident from '../../incident.json';
-import users from '../../user.json';
+import pg from 'pg';
+import dotenv from 'dotenv';
+// Importing Database Details
+import pool from '../models/db';
+
+dotenv.config();
 
 const router = express.Router();
 
+// ======================== Red-flag records ===========================================
 router.post('/red-flags', recordController.createRecord);
 router.get('/red-flags', recordController.fetchAllRecords);
 router.get('/red-flags/:id', recordController.fetchOneRecord);+
