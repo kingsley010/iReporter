@@ -14,7 +14,8 @@
     "url": "git+https://github.com/perfect090/iReporter.git"
   },
   "engines": {
-    "node": "8.11.2"
+    "node": "8.11.2",
+    "npm": "5.6.0"
   },
   "keywords": [
     "node",
@@ -29,9 +30,12 @@
   },
   "homepage": "https://github.com/perfect090/iReporter#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "pg": "^7.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
