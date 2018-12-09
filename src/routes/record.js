@@ -1,3 +1,5 @@
+import incident from '../../incident.json';
+import users from '../../user.json';
 import express from 'express';
 import recordController from '../controllers/record';
 import pg from 'pg';
