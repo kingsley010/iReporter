@@ -2,14 +2,16 @@ import incident from '../../incident.json';
 import users from '../../user.json';
 import express from 'express';
 import recordController from '../controllers/record';
+import authController from '../controllers/auth';
 import pg from 'pg';
 import dotenv from 'dotenv';
-// Importing Database Details
-import pool from '../models/db';
 
 dotenv.config();
 
 const router = express.Router();
+
+// ======================== Auth Route ===========================================
+router.post('/auth/signup', authController.signUp)
 
 // ======================== Red-flag records ===========================================
 router.post('/red-flags', recordController.createRecord);
