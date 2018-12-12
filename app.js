@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import morgan from 'morgan';
 
 require('dotenv').config();
@@ -9,6 +10,9 @@ require('dotenv').config();
 const app = express();
 
 const port = process.env.PORT || 3000;
+
+// Handling CORS errors
+app.use(cors());
 
 // Set Public Folder
 app.use(express.static(path.join(__dirname, "public")));
