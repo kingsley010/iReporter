@@ -100,3 +100,39 @@ describe('removeOneRecord', () => {
       });
   });
 });
+
+describe('signUp', () => {
+  it('should sign user up successfully', (done) => {
+    chai.request(app)
+    .post('/api/v1/auth/signup')
+    .send({
+      firstname: 'Kingsley',
+      lastname: 'perfect',
+      othernames: 'kaka',
+      email: 'King@gmail.com',
+      phonenumber: '1234567890',
+      username: 'King',
+      password: '12345',
+      passwordagain: '12345'
+    })
+      .end((err, res) => {
+        res.should.have.status(201);
+      })
+      done();
+  });
+});
+
+describe('signIn', () => {
+  it('it should login user successfully', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        username: 'King',
+        password: '12345'
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+      });
+      done();
+  });
+});
