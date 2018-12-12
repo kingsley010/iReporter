@@ -3,8 +3,6 @@ import users from '../../user.json';
 import express from 'express';
 import pg from 'pg';
 import dotenv from 'dotenv';
-// Importing Database Details
-import pool from '../models/db';
 
 dotenv.config();
 

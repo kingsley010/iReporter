@@ -2,6 +2,10 @@ import express from 'express';
 import pg from 'pg';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+import authMiddleware from '../middlewares/auth';
+
+dotenv.config();
 
 const pool = new pg.Pool({
   host: process.env.POSTGRES_HOST,
@@ -80,19 +84,23 @@ exports.signUp = (req, res) => {
                 req.body.username,
                 hash,
               ]);
-              if (error) {
-                res.status(404).json({
-                  data: [{
-                      message: 'error'
-                  }]
-                });
-              } else {
+              client.query('SELECT * FROM users WHERE username=$1', [req.body.username], (err, result) => {
+              const authUser = result.rows[0];
+              jwt.sign({
+                authUser,
+              }, process.env.SECRET_KEY, (jwterror, jwtoken) => {
+                if (jwterror) {
+                  return res.status(417).json({
+                    success: false,
+                    message: err,
+                  });
+                }
                 return res.status(201).json({
-                  data: [{
-                      message: 'successfully posted'
-                  }]
+                  success: true,
+                  message: `successfully signed up. Here is your token: ${jwtoken}`,
                 });
-              }
+              });
+            });
             done();
             });
           });
@@ -108,37 +116,48 @@ exports.signIn = (req, res) => {
   if (!req.body.username || !req.body.password) {
     return res.json({
       success: false,
-      message: 'Please fill in all fields'
+      message: 'Your entry contains a missing field.',
     });
   }
   pool.connect((err, client, done) => {
     if (err) {
       return res.status(500).json({
-        data: [{
-             message: 'could not connect to database'
-        }]
+        success: false,
+        message: err,
       });
     }
-    client.query('SELECT userid, username, password FROM users WHERE username=$1', [req.body.username], (errors, result) => {
-      if (result && result.rows.length === 1) {
-         bcrypt.compare(req.body.password, result.rows[0].password, (err, bcryptres) => {
-              if (err) { throw err }
-                else {
-            return res.status(201).json({
-              data: [{
-                  message: 'Logged in successfully'
-              }]
+    client.query('SELECT * FROM users WHERE username=$1', [
+        req.body.username,
+      ], (errors, result) => {
+        if (result && result.rows.length > 0 ) {
+            bcrypt.compare(req.body.password, result.rows[0].password, (err, isMatch) => {
+              if (err) throw err;
+              if (isMatch) {
+                const authUser = result.rows[0];
+                jwt.sign({
+                  authUser,
+                }, process.env.SECRET_KEY, (err, jwtoken) => {
+                  return res.status(201).json({
+                    data: [{
+                        message: `successfully logged in. Here is your token: ${jwtoken}`,
+                    }]
+                  });
+                });
+              } else {
+                console.log(err);
+                return res.status(401).json({
+                  success: false,
+                  message: 'Your password is incorrect',
+                });
+              }
             });
-          }
-        });
-      } else {
-         res.status(400).json({
-          data: [{
-            message: 'Username or password is incorrect'
-          }]
-        });     
-      }
-    });
+          } else {
+          res.status(404).json({
+            success: false,
+            message: 'Your username is incorrect',
+          });
+        }
+      });
     done();
   });
 };
