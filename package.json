@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js --exec babel-node --presets babel-preset-env",
     "build": "babel --presets env src -d dist",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text _mocha --require babel-register --exit",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text _mocha --timeout 10000 --require babel-core/register --exit",
     "coveralls": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls",
     "create-tables": "babel-node src/models/createTables",
     "drop-tables": "babel-node src/models/dropTables",
@@ -43,6 +43,7 @@
     "jsonwebtoken": "^8.4.0",
     "morgan": "^1.9.1",
     "pg": "^7.7.1",
+    "swagger-ui-express": "^4.0.2",
     "validator": "^10.9.0"
   },
   "devDependencies": {

@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
 // Route Files
 import records from './src/routes/record';
 app.use('/api/v1', records);
+import interventions from './src/routes/interventionRoutes';
+app.use('/api/v1', interventions);
+import signs from './src/routes/signRoutes';
+app.use('/api/v1', signs);
 
 app.use((req, res, next) => {
 	const error = new Error('Not Found');
