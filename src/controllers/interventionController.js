@@ -26,6 +26,38 @@ class InterventionController {
 
     });
   }
+
+  static fetchAllInterventions(req, res) {
+    client.query('SELECT * FROM records', (err, result) => {
+      if (err) {
+        res.status(400).send({
+          message: err
+        });
+      } else {
+        res.status(200).send({
+              data: result.rows
+        });
+      }
+    });
+  }
+
+  static getSpecificIntervention(req, res) {
+    const { id } = req.params;
+
+    client.query('SELECT * FROM records WHERE id = $1', [+id], (err, result) => {
+      if (err) {
+        res.status(400).send({
+          status: res.statusCode,
+          error: err,
+        });
+      } else {
+        res.status(200).send({
+          status: res.statusCode,
+          data: result.rows,
+        });
+      }
+    });
+  }
 }
 
 export default InterventionController;
