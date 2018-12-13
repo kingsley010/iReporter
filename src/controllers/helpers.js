@@ -26,30 +26,3 @@ export const isPass = (password) => {
 	const pass = /.{6,}/;
 	return pass.test(password);
 }
-
-    const { firstname } = req.body;
-    const { lastname } = req.body;
-    const { othernames } = req.body;
-    const { email } = req.body;
-    const { phonenumber } = req.body;
-    const { password } = req.body;
-
-    export const checkUser = (username) => {
-       const { username } = req.body;
-       const use = /[A-Za-z0-9]{2,}/;
-       return use.test(username);
-    }
-
-    export const checkPass = (req.body.password) =>
-    const passPattern = /.{6,}/;
-    const phoneNumberPattern = /[0-9]{11,13}/;
-    const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const { firstname } = req.body;
-    const { lastname } = req.body;
-    const { othernames } = req.body;
-    const { email } = req.body;
-    const { phonenumber } = req.body;
-    const { username } = req.body;
-      const { password } = req.body;
-
-      export default Helpers;

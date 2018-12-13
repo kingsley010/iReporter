@@ -58,6 +58,48 @@ class InterventionController {
       }
     });
   }
+
+  static updateLocation(req, res) {
+    const { id } = req.params;
+    const { location } = req.body;
+    client.query('UPDATE records SET location = ($1) WHERE id = ($2) RETURNING (id)', [location, +id], (err, result) => {
+      if (err) {
+        res.status(400).send({
+          status: res.statusCode,
+          error: err,
+        });
+      } else {
+        res.status(200).send({
+          status: res.statusCode,
+          data: [{
+            id: result.rows[0].id,
+            message: 'Updated intervention record\'s location',
+          }],
+        });
+      }
+    });
+  }
+
+  static updateComment(req, res) {
+    const { id } = req.params;
+    const { comment } = req.body;
+    client.query('UPDATE records SET comment= ($1) WHERE id = ($2) RETURNING (id)', [comment, +id], (err, result) => {
+      if (err) {
+        res.status(400).send({
+          status: res.statusCode,
+          error: err,
+        });
+      } else {
+        res.status(200).send({
+          status: res.statusCode,
+          data: [{
+            id: result.rows[0].id,
+            message: 'Updated intervention record\'s comment',
+          }],
+        });
+      }
+    });
+  }
 }
 
 export default InterventionController;
