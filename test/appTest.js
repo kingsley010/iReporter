@@ -101,38 +101,101 @@ describe('removeOneRecord', () => {
   });
 });
 
-describe('signUp', () => {
-  it('should sign user up successfully', (done) => {
-    chai.request(app)
-    .post('/api/v1/auth/signup')
-    .send({
-      firstname: 'Kingsley',
-      lastname: 'perfect',
-      othernames: 'kaka',
-      email: 'King@gmail.com',
-      phonenumber: '1234567890',
-      username: 'King',
-      password: '12345',
-      passwordagain: '12345'
-    })
-      .end((err, res) => {
-        res.should.have.status(201);
-      })
-      done();
+
+import client from '../src/config/heroku_postgres';
+import Verify from '../src/middlewares/verify';
+
+let testToken;
+
+before((done) => {
+  client.query('TRUNCATE users, records RESTART IDENTITY', (err) => {
+    if (err) {
+      throw new Error('Truncating failed');
+    } else {
+      client.query('INSERT INTO users  (firstname, lastname, othernames, email, phonenumber, username, password) VALUES ($1,$2,$3, $4, $5, $6, $7) RETURNING (firstname)', ['Otti', 'Grant', 'Onyeukwu', 'otti.onyeukwu@gmail.com', '08068753218', 'wizzywise', '$2a$10$JR0.jzaGDj6pGHDe5W22h.rDMQqUYvi.2wxHhpKKPcSpb0MgCwuS.'], (er, results) => {
+        if (err) {
+          throw new Error('An error has occured');
+        } else {
+          testToken = Verify.generateToken(results.rows[0]);
+          done();
+        }
+      });
+    }
   });
 });
 
-describe('signIn', () => {
-  it('it should login user successfully', (done) => {
+
+describe('Interventions', () => {
+  it('it should test the users signup credentials', (done) => {
+    const user = {
+      firstname: 'Kingsley',
+      lastname: 'Perfect',
+      othernames: 'Macho',
+      email: 'kingso@gmail.com',
+      phonenumber: '08130259389',
+      username: 'kaka',
+      password: 'qwerty',
+    };
     chai.request(app)
-      .post('/api/v1/auth/signin')
-      .send({
-        username: 'King',
-        password: '12345'
-      })
+      .post('/api/v1/auth/signup')
+      .send(user)
       .end((err, res) => {
+        const { token } = res.body.data[0];
+        if (err) {
+          throw new Error(err);
+        }
         res.should.have.status(201);
+        res.body.data[0].user.should.have.property('firstname').eql('Kingsley');
+        res.body.data[0].user.should.have.property('lastname').eql('Perfect');
+        res.body.data[0].user.should.have.property('email').eql('kingso@gmail.com');
+        res.body.data[0].user.should.have.property('phonenumber').eql('08130259389');
+        res.body.data[0].user.should.have.property('username').eql('kaka');
+        res.body.data[0].token.should.have.be.eql(token);
+        done();
       });
-      done();
   });
 });
+
+  it('should compare the username and password provided by the user during registration', (done) => {
+    const user = {
+      email: 'kingso@gmail.com',
+      password: 'qwerty',
+    };
+
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(user)
+      .end((err, res) => {
+        if (err) {
+          throw new Error(err);
+        }
+        res.should.have.status(200);
+        res.body.data[0].user.should.have.property('username').eql('otti.kingso@gmail.com');
+        res.body.data.should.be.a('array');
+        res.body.data[0].user.should.be.a('object');
+        done();
+      });
+  });
+
+  it('should create a new intervention record', (done) => {
+    let record = {
+      createdBy: 1,
+      type: 'intervention',
+      location: 'lat: -34.397, lng: 150.644',
+      image: ["'dsdffgghhijk','qwasdcvhjkopijh'"],
+      comment: 'Hey',
+    };
+    chai.request(app)
+      .post('/api/v1/interventions')
+      .set('x-auth', testToken)
+      .send(record)
+      .end((err, res) => {
+        if (err) {
+          throw new Error(err);
+        }
+        res.should.have.status(201);
+        res.body.data[0].should.have.property('id').eql(1);
+        res.body.data[0].should.have.property('message').eql('Record created successfully');
+        done();
+      });
+  });
