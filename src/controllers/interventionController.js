@@ -11,13 +11,13 @@ class InterventionController {
     const { videos } = req.body;
     const { comment } = req.body;
 
-    client.query('INSERT INTO records(createdby, type, location, images, videos, comment) VALUES($1,$2,$3, $4, $5, $6)RETURNING (id)', [createdby, type, location, images, videos, comment], (err, result) => {
-      if (err) {
+    client.query('INSERT INTO records(createdby, type, location, images, videos, comment) VALUES($1,$2,$3, $4, $5, $6)RETURNING (id)', [createdby, type, location, images, videos, comment], (errs, result) => {
+      if (errs) {
         return res.status(400).send({
-          message: err,
+          message: errs,
         });
       }
-      return res.header('x-auth', jwtoken).status(201).send({
+      return res.status(201).send({
         data: [{
           id: result.rows[0].id,
           message: 'Record created successfully',

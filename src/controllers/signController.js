@@ -109,10 +109,10 @@ class SignController {
   }
 
  static signIn (req, res) {
-  const { email } = req.body;
+  const { username } = req.body;
   const { password } = req.body;
 
-  client.query('SELECT * FROM users WHERE email = $1', [email], (error, results) => {
+  client.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
     if (error) {
       res.status(501).send({
         status: res.statusCode,
@@ -136,9 +136,9 @@ class SignController {
             email: info.email,
             phonenumber: info.phonenumber,
             username: info.username,
-            isAdmin: info.isAdmin,
+            issdmin: info.isadmin,
           };
-          const token = Verify.generateToken({ email, admin: results.rows[0].admin });
+          const token = Verify.generateToken({ username, admin: results.rows[0].isadmin });
           res.header('x-auth', token).status(200).send({
             success: 'Logged in successfully',
             data: [{
@@ -149,14 +149,14 @@ class SignController {
         } else {
           res.status(401).send({
             status: res.statusCode,
-            error: 'email or password is incorrect',
+            error: 'username or password is incorrect',
           });
         }
       });
     } else {
       res.status(400).send({
         status: res.statusCode,
-        error: 'email or password is incorrect',
+        error: 'username or password is incorrect',
       });
     }
   });
