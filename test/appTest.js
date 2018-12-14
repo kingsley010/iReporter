@@ -123,3 +123,108 @@ before((done) => {
     }
   });
 });
+
+describe('postIntervention', () => {
+  it('should post an intervention record', (done) => {
+    let record = {
+      id: 1,
+      title: 'Hello',
+      createdOn: '25/11/2018',
+      createdBy: 1,
+      type: ['red-flag'],
+      location: 'lat: -34.397, lng: 150.644',
+      status: ['In draft'],
+      Images: [],
+      Videos: [],
+      comment: 'Hi'
+    };
+    chai.request(app)
+      .post('/api/v1/interventions')
+      .set('x-auth', testToken)
+      .send(record)
+      .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+      });
+      done();
+  });
+});
+
+describe('getAllIntervention', () => {
+  it('should get all intervention records', (done) => {
+    chai.request(app)
+      .get('/api/v1/interventions')
+      .set('x-auth', testToken)
+      .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+      });
+      done();
+  });
+});
+
+describe('getSpecificIntervention', () => {
+  it('should get a specific intervention record', (done) => {
+    chai.request(app)
+      .get('/api/v1/interventions/1')
+      .set('x-auth', testToken)
+      .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+      });
+      done();
+  });
+});
+
+describe('updateLocation', () => {
+  it('should update the location of a specific intervention record', (done) => {
+    chai.request(app)
+      .patch('/api/v1/interventions/2/location')
+      .set('x-auth', testToken)
+      .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+      });
+      done();
+  });
+});
+
+describe('updateComment', () => {
+  it('should update the comment of a specific intervention record', (done) => {
+    chai.request(app)
+      .patch('/api/v1/interventions/2/comment')
+      .set('x-auth', testToken)
+      .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+      });
+      done();
+  });
+});
+
+describe('deleteOneIntervention', () => {
+  it('should delete a specific intervention record', (done) => {
+    chai.request(app)
+      .delete('/api/v1/interventions/2')
+      .set('x-auth', testToken)
+      .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+      });
+      done();
+  });
+});
+
+describe('changeStatus', () => {
+  it('should change the status of a specific intervention record', (done) => {
+    chai.request(app)
+      .update('/api/v1/interventions/2/status')
+      .set('x-auth', testToken)
+      .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+      });
+      done();
+  });
+});
+

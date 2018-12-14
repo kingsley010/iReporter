@@ -12,7 +12,7 @@ class Verify {
 
     if (token) {
       jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
-        if (decoded.admin) {
+        if (decoded.isadmin === true) {
           req.decoded = decoded;
           next();
         }
