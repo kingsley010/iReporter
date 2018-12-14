@@ -29,7 +29,7 @@ class Verify {
 
   static verifyUser(req, res, next) {
     const token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers['x-auth'];
-
+    console.log(token);
     if (token) {
       jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
         if (err) {
@@ -38,6 +38,11 @@ class Verify {
           req.decoded = decoded;
           next();
         }
+      });
+    } else {
+      return res.status(400).send({
+        status: res.sendStatus,
+        message: 'No token provided'
       });
     }
   }

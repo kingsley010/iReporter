@@ -58,7 +58,7 @@ class SignController {
                   const user = {
                     firstname, lastname, othernames, email, phonenumber, username,
                   };
-                  const token = Verify.generateToken({ username });
+                  const token = Verify.generateToken({ user });
                   res.header('x-auth', token).status(201).send({
                     status: res.statusCode,
                     data: [{
@@ -138,7 +138,7 @@ class SignController {
             username: info.username,
             isAdmin: info.isAdmin,
           };
-          const token = Verify.generateToken({ username, admin: results.rows[0].isadmin });
+          const token = Verify.generateToken({ user, admin: results.rows[0].isadmin });
           res.header('x-auth', token).status(200).send({
             success: 'Logged in successfully',
             data: [{
