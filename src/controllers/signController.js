@@ -77,28 +77,28 @@ class SignController {
       });
     } else {
       if (!emailPattern.test(req.body.email)) {
-        validationErrorMsg = 'please provide a valid email: the email you entered is not in the right format';
+        validationErrorMsg = 'Email is invalid';
       }
 
       if (!userPattern.test(req.body.username)) {
-        validationErrorMsg = 'your username must be upto or greater than 2 (two) characters';
+        validationErrorMsg = 'Your username must not be less than 2 characters';
       }
       if (!passPattern.test(req.body.password)) {
-        validationErrorMsg = 'your password can be made of any character but it must be greater than or equal to six(6) in length, empty strings are not allowed';
+        validationErrorMsg = 'Your password must not be less than 6 characters';
       }
 
       if (!phoneNumberPattern.test(req.body.phonenumber)) {
-        validationErrorMsg = 'your phone number must be digits of length between 11 and 13';
+        validationErrorMsg = 'Your phone number must be digits of length between 11 and 13';
       }
       if (!userPattern.test(req.body.firstname)) {
-        validationErrorMsg = 'your firstname must be upto or greater than 2 (two) characters';
+        validationErrorMsg = 'Your firstname must not be less than 6 characters';
       }
 
       if (!userPattern.test(req.body.lastname)) {
-        validationErrorMsg = 'your lastname must be upto or greater than 2 (two) characters';
+        validationErrorMsg = 'Your lastname must not be less than 6 characters';
       }
       if (!userPattern.test(req.body.othername)) {
-        validationErrorMsg = 'your othername must be upto or greater than 2 (two) characters';
+        validationErrorMsg = 'Your othernames field must not be less than 6 characters';
       }
 
       res.status(400).send({
