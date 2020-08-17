@@ -1,0 +1,90 @@
+{
+  "records": {
+    "redflags": [
+    {
+      "id": 1,
+      "createdOn": "25/11/18",
+      "createdBy": 1,
+      "type": ["red-flag"],
+      "location": "lat: -34.397, lng: 150.644",
+      "status": ["under investigation"],
+      "images": ["Image", "Image"],
+      "videos": ["Image", "Image"],
+      "comment": "The Halliburton scandal"
+    },
+    {
+      "id": 2,
+      "createdOn": "25/11/18",
+      "createdBy": 2,
+      "type": ["red-flag"],
+      "location": "lat: -34.397, lng: 150.644",
+      "status": ["under investigation"],
+      "images": ["Image", "Image"],
+      "videos": ["Image", "Image"],
+      "comment": "Minister should be probed for siphoning of public funds"
+    },
+    {
+      "id": 3,
+      "createdOn": "26/11/18",
+      "createdBy": 3,
+      "type": ["redflag"],
+      "location": "lat: -34.397, lng: 150.644",
+      "status": "draft",
+      "images": ["Image", "Image"],
+      "videos": ["Image", "Image"],
+      "comment": "The Halliburton scandal"
+    },
+    {
+      "id": 4,
+      "createdOn": "26/11/18",
+      "createdBy": 4,
+      "type": ["red-flag"],
+      "location": "lat: -34.397, lng: 150.644",
+      "status": ["under investigation"],
+      "images": ["Image", "Image"],
+      "videos": ["Image", "Image"],
+      "comment": "Minister should be probed for siphoning of public funds"
+    },
+    {
+      "id": 5,
+      "createdOn": "26/11/18",
+      "createdBy": 5,
+      "type": ["redflag"],
+      "location": "lat: -34.397, lng: 150.644",
+      "status": ["resolved"],
+      "images": ["Image", "Image"],
+      "videos": ["Image", "Image"],
+      "comment": "Minister should be probed for siphoning of public funds"
+    }
+  ],
+  "intervention": [
+    {
+      "id": 1,
+      "createdOn": "26/11/18",
+      "createdBy": 1,
+      "type": ["intervention"],
+      "location": "lat: -34.397, lng: 150.644",
+      "status": ["resolved"],
+      "images": ["Image", "Image"],
+      "videos": ["Image", "Image"],
+      "comment": "Fallen electric poles at Apapa"
+    },
+    {
+      "id": 2,
+      "createdOn": "26/11/18",
+      "createdBy": 2,
+      "type": ["intervention"],
+      "location": "lat: -34.397, lng: 150.644",
+      "status": "draft",
+      "images": ["Image", "Image"],
+      "videos": ["Image", "Image"],
+      "comment": "Government should look into bad roads at Amuwo"
+    }
+  ]
+
+            }
+}
+
+  
+
+  
