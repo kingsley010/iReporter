@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perfect090/iReporter.git"
+    "url": "git+https://github.com/kingsley010/iReporter.git"
   },
   "engines": {
     "node": "8.11.2",
@@ -30,9 +30,9 @@
   "author": "Obioha Kingsley",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/perfect090/iReporter/issues"
+    "url": "https://github.com/kingsley010/iReporter/issues"
   },
-  "homepage": "https://github.com/perfect090/iReporter#readme",
+  "homepage": "https://github.com/kingsley010/iReporter#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
